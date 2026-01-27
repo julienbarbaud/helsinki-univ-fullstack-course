@@ -1,18 +1,16 @@
 function Header(props){
-  return(
-    <h1>{props.title}</h1>
-  )
+  return <h1>{props.course.name}</h1>
 }
 
 
 function Total(props){
-  const total = props.exercises.reduce((res, ex) => res + ex)
-  return(<p>Number of exercises: {total}</p>)
+  const total = props.parts.reduce((res, part) => res + part.exercises, 0)
+  return <p>Number of exercises: {total}</p>
 }
 
 
 function Part(props){
-  return(<p>{props.name} ({props.exercises} exercises)</p>)  
+  return <p>{props.part.name} ({props.part.exercises} exercises)</p>
 }
 
 
@@ -20,29 +18,29 @@ function Content(props){
   //TODO: figure out how to use a loop in the HTML-like syntax
   return(
     <>
-    <Part name={props.parts[0]} exercises={props.exercises[0]}/>
-    <Part name={props.parts[1]} exercises={props.exercises[1]}/>
-    <Part name={props.parts[2]} exercises={props.exercises[2]}/>
+      <Part part={props.parts[0]}/>
+      <Part part={props.parts[1]}/>
+      <Part part={props.parts[2]}/>
     </>
   )
 }
 
 
 function App() {
-  const course = "Half stack application development"
-  const exercises = [10, 7, 14]
-  const parts = [
-    "fundamentals of React",
-    "Using props to pass data",
-    "State of a component",
-  ]
-
+  const course = {
+    name: "Half stack application development",
+    parts: [
+      {name: "fundamentals of React", exercises: 10},
+      {name: "Using props to pass data", exercises: 7},
+      {name: "State of a component", exercises: 14},
+    ]
+  }
 
   return (
     <div>
-      <Header title={course}/>
-      <Content parts={parts} exercises={exercises}/>
-      <Total exercises={exercises}/>
+      <Header course={course}/>
+      <Content parts={course.parts}/>
+      <Total parts={course.parts}/>
     </div>
   )
 }
