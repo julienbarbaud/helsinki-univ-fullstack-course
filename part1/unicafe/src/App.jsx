@@ -55,9 +55,9 @@ const StatBlock = ({ counters }) => {
 }
 
 function App() {
-  let [goodCount, setGoodCount] = useState(0);
-  let [neutralCount, setNeutralCount] = useState(0);
-  let [badCount, setBadCount] = useState(0);
+  const [goodCount, setGoodCount] = useState(0);
+  const [neutralCount, setNeutralCount] = useState(0);
+  const [badCount, setBadCount] = useState(0);
 
   const counters = [
     {name: "good", count: goodCount, setter: setGoodCount},
