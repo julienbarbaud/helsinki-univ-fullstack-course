@@ -4,6 +4,7 @@ import PersonForm from './components/PersonForm.jsx'
 import Filter from './components/Filter.jsx'
 import { useEffect } from 'react'
 import axios from 'axios'
+import connection from './services/connection.js'
 
 
 const App = () => {
@@ -11,11 +12,11 @@ const App = () => {
   const [filterKey, setFilterKey] = useState('')  
 
   useEffect(()=>{
-    axios
-      .get("http://localhost:3001/persons")
-      .then((resp)=>{
-        console.log(`received response data:\n ${JSON.stringify(resp.data)}}`)
-        setPersons(resp.data)
+    connection
+      .getAll()
+      .then((personsResponse)=>{
+        console.log(`received response data:\n ${JSON.stringify(personsResponse)}}`)
+        setPersons(personsResponse)
       })
   }, [])
 
@@ -30,7 +31,7 @@ const App = () => {
       <h2>Add a new person</h2>
         <PersonForm persons={persons} setPersons={setPersons}/>
       <h2>Numbers</h2>
-        <NumbersTable persons={personsToShow}/>
+        <NumbersTable personsToShow={personsToShow} persons={persons} setPersons={setPersons}/>
     </div>
   )
 }

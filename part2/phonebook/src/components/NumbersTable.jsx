@@ -1,18 +1,37 @@
-const PersonLine = ({ person }) => {
+import connection from "../services/connection"
+
+const PersonLine = ({ person, handler }) => {  
   return(
     <tr>
       <td>{person.name}</td>
       <td>{person.number}</td>
+      <td><button onClick={handler}>delete</button></td>
     </tr>
   )
 }
 
 
-const NumbersTable = ({ persons }) => {
+const NumbersTable = ({ personsToShow, persons, setPersons }) => {
+  const handleDelete = (id) => () => {
+    console.log(`deleting id ${id}`)
+    const name = persons.find((p)=>p.id===id).name
+    // asking confirmation
+    if (!window.confirm(`do you really want to delete ${name}`)) return
+    
+    connection
+      .deleteId(id)
+      .then((data)=> {
+        console.log(data) // DELETE response body is empty
+        setPersons(persons.filter((person)=>person.id !== id))
+      })
+  }
+
   return(
     <table>
       <tbody>
-        {persons.map((person)=><PersonLine key={person.name} person={person}/>)}
+        {personsToShow.map(
+          (person)=><PersonLine key={person.id} person={person} handler={handleDelete(person.id)}/>
+        )}
       </tbody>
     </table>
   )
