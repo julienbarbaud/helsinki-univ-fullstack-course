@@ -4,23 +4,26 @@ const PersonForm = ({ persons, setPersons }) => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
-  const handleEdgeCases = () => {
+  const isValid = () => {
     // function to do some basic checks on the input upon submission
     if (newName === ''){
       // ignoring empty inputs
       alert("Please enter a name before submitting")
-      return
+      return false
     }
     if (persons.find((user)=>user.name === newName) !== undefined){
       // preventing duplicates
       alert(`${newName} is already registered in the phonebook`)
-      return
+      return false
     }
+    return true
   }
 
   const handleSubmission = (event) => {
     event.preventDefault()
-    handleEdgeCases()
+    if (!isValid()){
+      return 
+    }
     // placeholder in case of an empty number
     const num = newNumber === '' ? "no number" : newNumber
 
