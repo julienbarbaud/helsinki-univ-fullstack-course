@@ -11,7 +11,7 @@ const PersonLine = ({ person, handler }) => {
 }
 
 
-const NumbersTable = ({ personsToShow, persons, setPersons }) => {
+const NumbersTable = ({ personsToShow, persons, setPersons, setNotif }) => {
   const handleDelete = (id) => () => {
     console.log(`deleting id ${id}`)
     const name = persons.find((p)=>p.id===id).name
@@ -22,8 +22,19 @@ const NumbersTable = ({ personsToShow, persons, setPersons }) => {
       .deleteId(id)
       .then((data)=> {
         console.log(data) // DELETE response body is empty
-        setPersons(persons.filter((person)=>person.id !== id))
       })
+      .catch( () => {
+        console.log("catching exception while attemtping to delete")
+        setNotif({
+          text: `${name} already couldn't be found on the server!`,
+          isError: true
+        })
+        setTimeout(
+          () => setNotif(null),
+          4000
+        )
+      })
+      .finally(() => setPersons(persons.filter((person)=>person.id !== id)))
   }
 
   return(

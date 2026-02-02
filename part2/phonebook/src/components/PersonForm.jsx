@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from 'axios'
 import connection from "../services/connection"
 
-const PersonForm = ({ persons, setPersons }) => {
+const PersonForm = ({ persons, setPersons, setNotif }) => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
@@ -17,15 +17,31 @@ const PersonForm = ({ persons, setPersons }) => {
     return true
   }
 
+  const displayNotif = (message) => {
+    setNotif({
+      text: message,
+      isError: false
+    })
+    setTimeout(
+      () => setNotif(null),
+      4000 
+    )
+  }
+
   const handleDuplicates = (duplicate, num) => {
     console.log("found duplicate:", duplicate)
     if (!window.confirm(`${newName} is already registered. Do you wanna update his number?`)) return
     const newPerson = {...duplicate, number: num}
     connection
       .updatePerson(newPerson)
-      .then(setPersons(persons.map(
-        (person)=> person.id === newPerson.id ? newPerson : person
-      )))
+      .then( () => {
+        setPersons(persons.map(
+          (person)=> person.id === newPerson.id ? newPerson : person
+        ))
+        setNewName('')
+        setNewNumber('')
+        displayNotif(`Updated ${newPerson.name}'s information!`)
+      })
   }
 
   const handleSubmission = (event) => {
@@ -49,7 +65,8 @@ const PersonForm = ({ persons, setPersons }) => {
     connection
       .postNew(newPerson)
       .then(personResponse => {
-        console.log(personResponse) 
+        console.log(personResponse)
+        displayNotif(`Registered ${newPerson.name} in the phonebook!`) 
         setPersons(persons.concat(personResponse))
         setNewName('')
         setNewNumber('')  
