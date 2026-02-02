@@ -1,0 +1,1 @@
+.notif{display:inline-block;background-color:#adff2f;border-color:green;border-radius:5px;border-width:2px;border-style:solid;width:fit-content;vertical-align:top;box-sizing:border-box;padding:10px 20px;margin-left:5px}.notif[type=error]{background-color:#ff002880;border-color:red}.notifText{margin:0;font-weight:bolder;color:green}.notifText[type=error]{color:red}
