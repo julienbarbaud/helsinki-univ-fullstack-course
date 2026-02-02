@@ -1,0 +1,31 @@
+.notif {
+    display: inline-block;
+    background-color: greenyellow;
+    border-color: green;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    width: fit-content;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px; 
+}
+
+.notif[type="error"]{
+    background-color: rgba(255, 0, 40, 0.5);
+    border-color: red;
+}
+
+.notifText {
+    margin: 0;
+    font-weight: bolder;
+    color: green;
+}
+
+.notifText[type="error"] {
+    color: red;
+}
