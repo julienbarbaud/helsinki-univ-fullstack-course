@@ -77,17 +77,17 @@ app.delete("/api/persons/:id", (request, response, next) => {
         .catch(error => next(error))
 })
 
-app.post("/api/persons", (request, response) => {
+app.post("/api/persons", (request, response, next) => {
     const person = request.body
-
-    // error handling
-    if (!person.name) return response.status(400).json({error: "The data must include a non-empty name"})
-    //NB: the test below rejects 0 as a number since it is falsy. Leaving it as is, since it is reasonable to consider that 0 is not a valid phone number anyway. 
-    if (!person.number) return response.status(400).json({error: "The data must include a number"})
+    // // error handling
+    // if (!person.name) return response.status(400).json({error: "The data must include a non-empty name"})
+    // //NB: the test below rejects 0 as a number since it is falsy. Leaving it as is, since it is reasonable to consider that 0 is not a valid phone number anyway. 
+    // if (!person.number) return response.status(400).json({error: "The data must include a number"})
     
     dbService
         .addPerson(person)
         .then(dbPerson=>response.json(dbPerson))
+        .catch(error => next(error))
 })
 
 
@@ -104,6 +104,9 @@ app.use((error, request, response, next) => {
     if (error.name === "CastError"){
         return response.status(400).send(`<h1>Database error</h1><p>${error.value} is not a valid id<p>`)
     } 
+    if (error.name === "ValidationError") {
+        return response.status(400).json({"message": error.message})
+    }
     next(error)
 })
 

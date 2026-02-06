@@ -6,21 +6,22 @@ const PersonForm = ({ persons, setPersons, setNotif }) => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
-  const isValid = () => {
-    // function to do some basic checks on the input upon submission 
-    // (NB: this function made more sense before the duplicate logic change, but could still be useful for logic extensions)
-    if (newName === ''){
-      // ignoring empty inputs
-      alert("Please enter a name before submitting")
-      return false
-    }
-    return true
-  }
+  //OBSOLETE FUNCTION REPLACED BY BACKEND VALIDATION
+  // const isValid = () => {
+  //   // function to do some basic checks on the input upon submission 
+  //   // (NB: this function made more sense before the duplicate logic change, but could still be useful for logic extensions)
+  //   if (newName === ''){
+  //     // ignoring empty inputs
+  //     alert("Please enter a name before submitting")
+  //     return false
+  //   }
+  //   return true
+  // }
 
-  const displayNotif = (message) => {
+  const displayNotif = (message, isError=false) => {
     setNotif({
       text: message,
-      isError: false
+      isError: isError
     })
     setTimeout(
       () => setNotif(null),
@@ -46,20 +47,17 @@ const PersonForm = ({ persons, setPersons, setNotif }) => {
 
   const handleSubmission = (event) => {
     event.preventDefault()
-    if (!isValid()) return
 
-    // placeholder in case of an empty number
-    const num = newNumber === '' ? "no number" : newNumber
     //handling duplicate logic:
     const duplicate = persons.find((user)=>user.name === newName)
     if (duplicate !== undefined) {
-      handleDuplicates(duplicate, num)
+      handleDuplicates(duplicate, newNumber)
       return
     }
 
     const newPerson = {
       name: newName,
-      number: num
+      number: newNumber,
     }
 
     connection
@@ -71,6 +69,11 @@ const PersonForm = ({ persons, setPersons, setNotif }) => {
         setNewName('')
         setNewNumber('')  
       })
+      .catch( error => {
+        const errorMessage = error.response.data.message
+        displayNotif(errorMessage, true)
+        //console.log(errorMessage)
+      })  
 
   }
 
