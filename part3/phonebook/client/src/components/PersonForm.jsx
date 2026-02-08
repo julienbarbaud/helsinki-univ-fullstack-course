@@ -1,5 +1,4 @@
 import { useState } from "react"
-import axios from 'axios'
 import connection from "../services/connection"
 
 const PersonForm = ({ persons, setPersons, setNotif }) => {
@@ -43,6 +42,7 @@ const PersonForm = ({ persons, setPersons, setNotif }) => {
         setNewNumber('')
         displayNotif(`Updated ${newPerson.name}'s information!`)
       })
+      .catch( error => displayNotif(error.response.data.message, true))
   }
 
   const handleSubmission = (event) => {
