@@ -55,6 +55,7 @@ app.post('/api/persons', (request, response, next) => {
     .catch((error) => next(error));
 });
 
+// NB: this endpoint = potential issue, put request could update any info (name or number)
 app.put('/api/persons/:id', (request, response, next) => {
   dbService
     .updatePerson(request.params.id, request.body)
