@@ -7,10 +7,13 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "node --test",
-    "dev": "node --watch index.js"
+    "start": "cross-env ENV_TYPE=prod node index.js",
+    "test": "cross-env ENV_TYPE=test node --test",
+    "dev": "cross-env ENV_TYPE=dev node --watch index.js",
+    "lint": "eslint ."
   },
   "dependencies": {
+    "cross-env": "^10.1.0",
     "dotenv": "^17.2.4",
     "express": "^5.2.1",
     "mongoose": "^9.1.6"
@@ -21,14 +24,16 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^4.6.2"
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "supertest": "^7.2.2"
   },
   "eslintConfig": {
     "extends": "airbnb",
     "rules": {
       "prefer-destructuring": "off",
       "no-console": "off",
-      "no-plusplus": "off"
+      "no-plusplus": "off",
+      "no-underscore-dangle": ["error",{ "allow": ["_id", "__v"] }]
     }
   }
 }
