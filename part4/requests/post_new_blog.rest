@@ -1,9 +1,8 @@
 POST http://localhost:3001/api/blogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OGM4NDU1ZDZmNzBkNjkwYTFjMmUzMyIsInVzZXJuYW1lIjoicm9vdCIsImlhdCI6MTc3MDg1MTg2NH0.gVm6Ynx-puTGnaps25jPMM7P9fbH5OX5ig_ysCGcO9o
 Content-Type: application/json
 
 {
-  "title": "video blog",
-  "author": "ytber1",
-  "url": "http://vblog.com",
-  "likes": 2
+  "title": "bamboozle blog",
+  "url": "http://txlog.com"
 }

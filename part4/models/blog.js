@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
+const { formatJson } = require('./helper');
 
 const blogSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
   },
-  author: String,
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
   url: {
     type: String,
     required: true,
@@ -13,15 +17,7 @@ const blogSchema = mongoose.Schema({
   likes: Number,
 });
 
-blogSchema.set('toJSON', {
-  virtuals: true,
-  /* eslint-disable no-param-reassign */
-  transform: (before, after) => {
-    delete after._id;
-    delete after.__v;
-  },
-  /* eslint-enable no-param-reassign */
-});
+formatJson(blogSchema);
 
 const Blog = mongoose.model('Blog', blogSchema);
 

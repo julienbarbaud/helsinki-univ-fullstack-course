@@ -1,7 +1,7 @@
 const { describe, test } = require('node:test');
 const { deepStrictEqual } = require('node:assert');
 const { mostLikes } = require('../utils/list_helper');
-const blogs = require('./testParameters');
+const { blogs } = require('./testUtils');
 
 describe('mostLikes test', () => {
   test('empty array returns null', () => deepStrictEqual(mostLikes([]), null));

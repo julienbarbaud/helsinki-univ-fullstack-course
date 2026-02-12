@@ -1,7 +1,7 @@
 const { test, describe } = require('node:test');
 const { deepStrictEqual } = require('node:assert');
 const { favoriteBlog } = require('../utils/list_helper');
-const blogs = require('./testParameters');
+const { blogs } = require('./testUtils');
 
 describe('favorite blog tests', () => {
   test('empty list returns a null object', () => deepStrictEqual(favoriteBlog([]), null));

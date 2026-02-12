@@ -1,7 +1,7 @@
 const { describe, test } = require('node:test');
 const { deepStrictEqual } = require('node:assert');
 const { mostBlogs } = require('../utils/list_helper');
-const blogs = require('./testParameters');
+const { blogs } = require('./testUtils');
 
 describe('mostBlogs test', () => {
   test('empty array returns null', () => deepStrictEqual(mostBlogs([]), null));

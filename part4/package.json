@@ -13,9 +13,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cross-env": "^10.1.0",
     "dotenv": "^17.2.4",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.6"
   },
   "devDependencies": {
@@ -33,7 +35,15 @@
       "prefer-destructuring": "off",
       "no-console": "off",
       "no-plusplus": "off",
-      "no-underscore-dangle": ["error",{ "allow": ["_id", "__v"] }]
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_id",
+            "__v"
+          ]
+        }
+      ]
     }
   }
 }
