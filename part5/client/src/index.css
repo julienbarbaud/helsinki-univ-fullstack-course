@@ -1,0 +1,52 @@
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 30px;
+}
+
+.logout-button {
+  width: fit-content;
+}
+
+.userDisplay {
+  font-weight: bold;
+  font-style: italic;
+  color: darkslategray;
+}
+
+td {
+  padding-right: 20px;
+}
+
+.notif-container {
+  position: fixed;
+  border-radius: 5px;
+  border: 5px;
+  border-style: solid;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-color: rgba(20, 20, 20, 0.8);
+  background-color: rgba(80,80,80,0.5);
+  font-size: larger;
+  font-weight: bolder;
+  color: white;
+}
+
+
+.notif-container[is-error] {
+  border-color: rgba(150, 10, 10, 0.9);
+  background-color: rgba(220,60,60,0.3);
+  color: red;
+}
+
+
