@@ -57,6 +57,22 @@ blogsRouter.delete('/:id', authenticateUser, async (request, response, next) => 
   }
 });
 
+blogsRouter.post('/:id/likes', authenticateUser, async (request, response, next) => {
+  try {
+    const blog = await Blog.findById(request.params.id);
+    if (!blog) return response.status(400).json({ error: 'no blog with that id' });
+    blog.set({
+      likes: blog.likes + 1,
+    });
+    const result = await blog.save();
+    await result.populate('author');
+    console.log(result);
+    return response.status(200).json(result);
+  } catch (error) {
+    return next(error);
+  }
+});
+
 blogsRouter.put('/:id', authenticateUser, async (request, response, next) => {
   try {
     const blog = await Blog.findById(request.params.id);

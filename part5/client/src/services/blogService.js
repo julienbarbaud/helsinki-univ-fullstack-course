@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const endpoint = '/api/blogs'
+const endpoint = '/api/blogs/'
 
 const getUserConfig = (user) => {
   if ((!user) || (!user.token)) return {}
@@ -10,7 +10,7 @@ const getUserConfig = (user) => {
     }
   }
   return config
-}
+};
 
 const postBlog = async (user, title, url) => {
   const { data } = await axios.post(
@@ -21,4 +21,19 @@ const postBlog = async (user, title, url) => {
   return data
 }
 
-export default { postBlog }
+const likeBlog = async (user, blog) => {
+  const { id } = blog;
+  const { data } = await axios.post(
+    endpoint + id + "/likes",
+    {},
+    getUserConfig(user),
+  );
+  return data;
+};
+
+const removeBlog = async (user, blog) => {
+  const { id } = blog;
+  await axios.delete(endpoint+id, getUserConfig(user))
+};
+
+export default { postBlog, likeBlog, removeBlog }

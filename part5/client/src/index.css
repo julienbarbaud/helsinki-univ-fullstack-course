@@ -49,4 +49,15 @@ td {
   color: red;
 }
 
+.blog-row {
+  /* box-shadow is the trick to get a 'border' that respects radius */
+  box-shadow: 0 0 0 2px black;
+  border-radius: 8px;
+}
+
+
+.blog-row td:last-child {
+  padding-bottom: 5px;
+}
+
 
