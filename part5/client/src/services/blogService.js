@@ -12,6 +12,11 @@ const getUserConfig = (user) => {
   return config
 };
 
+const getAllBlogs = async (setBlogs) => {
+  const { data } = await axios.get(endpoint);
+  setBlogs(data);
+}
+
 const postBlog = async (user, title, url) => {
   const { data } = await axios.post(
     endpoint,
@@ -36,4 +41,9 @@ const removeBlog = async (user, blog) => {
   await axios.delete(endpoint+id, getUserConfig(user))
 };
 
-export default { postBlog, likeBlog, removeBlog }
+export default {
+  postBlog,
+  likeBlog,
+  removeBlog,
+  getAllBlogs,
+}

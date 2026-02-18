@@ -8,7 +8,7 @@ const AccountDisplay = ({ userState }) => {
   return(
     <div className="account-container">
       <p className='userDisplay'>Welcome, {userState.user.name}</p>
-      <button class="logout-button" onClick={handleLogout}>Log out</button>
+      <button className="logout-button" onClick={handleLogout}>Log out</button>
     </div>
   )
 }
