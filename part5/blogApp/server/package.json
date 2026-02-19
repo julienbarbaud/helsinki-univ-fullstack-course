@@ -10,6 +10,7 @@
     "start": "cross-env ENV_TYPE=prod node index.js",
     "test": "cross-env ENV_TYPE=test node --test",
     "dev": "cross-env ENV_TYPE=dev node --watch index.js",
+    "start:test": "cross-env ENV_TYPE=test node --watch index.js",
     "lint": "eslint ."
   },
   "dependencies": {

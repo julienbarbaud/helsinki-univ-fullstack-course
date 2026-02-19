@@ -10,7 +10,6 @@ const Notification = ({ notif, setNotif }) => {
     3000,
   )
 
-  console.log(notif.isError);
   return(
     <div className="notif-container" is-error={notif.isError? "true" : undefined}>
       <p className="notif-message">{message}</p>

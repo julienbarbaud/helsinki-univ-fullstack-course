@@ -15,6 +15,7 @@ const BlogRow = ({ user, blog, setBlog }) => {
     setBlog(null);
   }
 
+  const userIsAuthor = blog.author.username.toString() === user.username.toString();
   return (
     <>
     <tbody className="blog-row">
@@ -29,7 +30,7 @@ const BlogRow = ({ user, blog, setBlog }) => {
           <td><button onClick={handleLike}>like</button></td>
         </tr>
         <tr><td>author username: {blog.author.username}</td></tr>
-        <tr><td colSpan="2"><button onClick={handleRemove}>remove</button></td></tr>
+        {(userIsAuthor) && <tr><td colSpan="2"><button onClick={handleRemove}>remove</button></td></tr>}
       </Togglable>
     </tbody>
     <tbody>

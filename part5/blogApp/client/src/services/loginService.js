@@ -7,6 +7,8 @@ const login = async(username, password) => {
   if (user) {
     window.localStorage.setItem('user', JSON.stringify(user))
   }
+  console.log('user object:');
+  console.log(user);
   return user
 }
 

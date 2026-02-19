@@ -58,6 +58,7 @@ blogsRouter.delete('/:id', authenticateUser, async (request, response, next) => 
 });
 
 blogsRouter.post('/:id/likes', authenticateUser, async (request, response, next) => {
+  // NB: should use findByIdandUpdate and $inc in a real app to avoid conccurency issues.
   try {
     const blog = await Blog.findById(request.params.id);
     if (!blog) return response.status(400).json({ error: 'no blog with that id' });
