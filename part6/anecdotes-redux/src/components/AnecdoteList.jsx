@@ -2,7 +2,12 @@ import { useSelector } from "react-redux";
 import Anecdote from "./Anecdote";
 
 const AnecdoteList = () => {
-  const anecdotes = useSelector((state) => state);
+  const filter = useSelector((state => state.filter));
+  console.log('filter: ', filter);
+
+  const anecdotes = useSelector((state) => state.anecdotes
+    .filter(({ content }) => content.toLowerCase().includes(filter.toLowerCase()))
+  );
   anecdotes.sort((a, b) => b.likes - a.likes)
   console.log('anecdotes: ', anecdotes)
 

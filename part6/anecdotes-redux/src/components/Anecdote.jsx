@@ -1,10 +1,14 @@
 import { useDispatch } from "react-redux";
 import { vote } from "../reducers/anecdoteReducer";
+import { showNotification } from "../reducers/notificationReducer";
 
 const Anecdote = ({ anecdote }) => {
   const dispatch = useDispatch();
 
-  const handleLike = () => dispatch(vote(anecdote.id));
+  const handleLike = () => {
+    dispatch(vote(anecdote.id))
+    dispatch(showNotification(`you upvoted "${anecdote.content}"`))
+  };
 
   return(
     <div>
