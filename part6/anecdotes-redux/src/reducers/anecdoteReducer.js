@@ -1,58 +1,39 @@
-import initialAnecdotes from "../utils/anecdoteSetup";
-import { generateId } from "../utils/anecdoteSetup";
 import { createSlice } from "@reduxjs/toolkit";
-
-// export const vote = (id) => {
-//   return {
-//     type: 'VOTE',
-//     payload: id,
-//   }
-// }
-
-// export const post = (content) => {
-//   return {
-//     type: 'POST',
-//     payload: {
-//       content,
-//       likes: 0,
-//       id: generateId(),
-//     },
-//   }
-// }
-
-// const anecdoteReducer = (state=initialAnecdotes, action) => {
-//   console.log(action);
-//   switch (action.type) {
-//     case 'VOTE': {
-//       const id = action.payload;
-//       return state.map(
-//         (anecdote) => anecdote.id === id ? {...anecdote, likes: anecdote.likes + 1} : anecdote
-//       );
-//     }
-//     case 'POST':
-//       return state.concat(action.payload);
-//     default:
-//       return state;
-//   }
-// }
-
+import jsonServerService from '../services/jsonServerService'
+import { showNotification } from "./notificationReducer";
 
 const anecdoteSlice = createSlice({
   name: 'anecdote',
-  initialState: initialAnecdotes,
+  initialState: [],
   reducers: {
     vote(draft, action) {
       draft.find((anecdote) => anecdote.id === action.payload).likes++
     },
     post(draft, action) {
-      draft.push({
-        content: action.payload,
-        likes: 0,
-        id: generateId(),
-      })
+      draft.push(action.payload)
     },
+    setAnecdotes(_, action) {
+      return action.payload;
+    }
   }
 })
 
 export default anecdoteSlice.reducer;
-export const { post, vote } = anecdoteSlice.actions;
+export const { post, vote, setAnecdotes } = anecdoteSlice.actions;
+
+export const initializeAnecdotes = () => async (dispatch) => {
+  const anecdotes = await jsonServerService.getAll();
+  dispatch(setAnecdotes(anecdotes));
+}
+
+export const postAnecdote = (content) => async (dispatch) => {
+  const data = await jsonServerService.postNew(content)
+  dispatch(post(data))
+  dispatch(showNotification(`you posted "${data.content}"`, 3));
+}
+
+export const likeAnecdote = (anecdote) => async (dispatch) => {
+  await jsonServerService.likePost(anecdote.id, anecdote.likes + 1)
+  dispatch(vote(anecdote.id))
+  dispatch(showNotification(`you upvoted "${anecdote.content}"`, 3))
+}

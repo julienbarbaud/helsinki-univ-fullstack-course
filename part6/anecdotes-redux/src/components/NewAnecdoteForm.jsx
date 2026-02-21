@@ -1,16 +1,13 @@
 import { useDispatch } from "react-redux";
-import { post } from "../reducers/anecdoteReducer";
-import { showNotification } from "../reducers/notificationReducer";
+import { postAnecdote } from "../reducers/anecdoteReducer";
 
 const NewAnecdoteForm = () => {
   const dispatch = useDispatch();
 
   const handlePost = (event) => {
     event.preventDefault();
-    const input = event.target.anecdote;
-    dispatch(post(input.value));
-    dispatch(showNotification(`you posted "${input.value}"`))
-    input.value = '';
+    dispatch(postAnecdote(event.target.anecdote.value))
+    event.target.anecdote.value = '';
   }
 
   return(

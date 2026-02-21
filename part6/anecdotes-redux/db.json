@@ -1,0 +1,49 @@
+{
+  "anecdotes": [
+    {
+      "content": "If it hurts, do it more often and say \"thank you daddy for making me squeal\".",
+      "id": "1",
+      "likes": 7
+    },
+    {
+      "content": "Premature optimization is the root of all evil. Which logically implies that any genocidal war crime that does not stem from premature optimization is not evil.",
+      "id": "2",
+      "likes": 3
+    },
+    {
+      "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it. Which is what a fool who thinks that writing code cleverly makes it harder to deal with would say. Writing code stupidly makes it harder to debug.",
+      "id": "3",
+      "likes": 3
+    },
+    {
+      "content": "Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients. Which is a perfectly reasonable decision for 95% of patients a doctor sees.",
+      "id": "4",
+      "likes": 0
+    },
+    {
+      "content": "The only way to go fast, is to go well. Or to give up early",
+      "id": "5",
+      "likes": 1
+    },
+    {
+      "id": "adac",
+      "content": "this is being posted to the json server like a good boy",
+      "likes": 1
+    },
+    {
+      "id": "d1ae",
+      "content": "dolphins are rapist",
+      "likes": 6
+    },
+    {
+      "id": "a3de",
+      "content": "those are not anecdotes, they are quotes",
+      "likes": 13
+    },
+    {
+      "id": "ee58",
+      "content": "afvqfvefv",
+      "likes": 0
+    }
+  ]
+}

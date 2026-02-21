@@ -17,7 +17,7 @@ export default notifSlice.reducer;
 export const { setNotif, deleteNotif } = notifSlice.actions;
 
 // using the thunk pattern to have a built-in reusable timer
-export const showNotification = (message) => (dispatch) => {
+export const showNotification = (message, duration) => (dispatch) => {
   dispatch(setNotif(message))
-  setTimeout(() => dispatch(deleteNotif()), 3000)
+  setTimeout(() => dispatch(deleteNotif()), duration * 1000)
 }
