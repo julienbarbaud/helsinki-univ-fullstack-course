@@ -1,0 +1,45 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "custom-hooks are awesome!"
+    },
+    {
+      "id": 2,
+      "content": "best feature ever <3"
+    },
+    {
+      "content": "i can write notes now",
+      "id": 3
+    },
+    {
+      "content": "I can write notes and see them being displayed now",
+      "id": 4
+    },
+    {
+      "content": "qvrveqrv",
+      "id": 5
+    },
+    {
+      "content": "what about now",
+      "id": 6
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "name": "mluukkai",
+      "number": "040-5483923"
+    },
+    {
+      "id": 2,
+      "name": "hellas",
+      "number": "012-123123"
+    },
+    {
+      "name": "superman",
+      "number": "911",
+      "id": 3
+    }
+  ]
+}
