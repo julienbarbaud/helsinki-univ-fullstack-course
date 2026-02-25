@@ -1,0 +1,54 @@
+{
+  "name": "part4",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env ENV_TYPE=prod node index.js",
+    "test": "cross-env ENV_TYPE=test node --test",
+    "dev": "cross-env ENV_TYPE=dev node --watch index.js",
+    "start:test": "cross-env ENV_TYPE=test node --watch index.js",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "supertest": "^7.2.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
+    "rules": {
+      "prefer-destructuring": "off",
+      "no-console": "off",
+      "no-plusplus": "off",
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_id",
+            "__v"
+          ]
+        }
+      ]
+    }
+  }
+}

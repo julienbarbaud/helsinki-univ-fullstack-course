@@ -1,0 +1,89 @@
+.app-title {
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+
+.appbar-container {
+  display: flex;
+}
+
+.mui-app-container {
+  padding-top: 150px;
+}
+
+.account-container {
+  margin-top: 25px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 30px;
+}
+
+.logout-button {
+  width: fit-content;
+}
+
+.post-form-container {
+  margin-top: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: fit-content;
+  gap: 5px;
+}
+
+.userDisplay {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.blog-table {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+td {
+  padding-right: 20px;
+}
+
+.notif-container {
+  position: fixed;
+  border-radius: 5px;
+  border: 5px;
+  border-style: solid;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-color: rgba(20, 20, 20, 0.8);
+  background-color: rgba(80, 80, 80, 0.5);
+  font-size: larger;
+  font-weight: bolder;
+  color: white;
+}
+
+.notif-container[is-error] {
+  border-color: rgba(150, 10, 10, 0.9);
+  background-color: rgba(220, 60, 60, 0.3);
+  color: red;
+}
+
+.blog-row {
+  /* box-shadow is the trick to get a 'border' that respects radius */
+  box-shadow: 0 0 0 2px darkcyan;
+  border-radius: 8px;
+}
+
+.blog-row td:last-child {
+  padding-bottom: 5px;
+}
+
+.spacer-row {
+  height: 10px;
+}
