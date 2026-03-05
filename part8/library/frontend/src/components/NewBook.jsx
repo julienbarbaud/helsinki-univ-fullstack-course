@@ -10,7 +10,11 @@ const NewBook = () => {
   const [genres, setGenres] = useState([]);
 
   const [postBook, _] = useMutation(createBookMutation, {
-    refetchQueries: [{ query: authorQuery }, { query: booksQuery }],
+    refetchQueries: [{ query: authorQuery }],
+    update(cache) {
+      // this is the only reliable way I found to force  refetch on the allbooks query with and without variables
+      cache.evict({ fieldName: "allBooks" });
+    },
   });
 
   const handleNewBook = (event) => {
