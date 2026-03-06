@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client/react";
-import { createBookMutation, authorQuery, booksQuery } from "../queries";
+import { createBookMutation, authorQuery } from "../queries";
 import { useState } from "react";
 
 const NewBook = () => {
@@ -12,7 +12,7 @@ const NewBook = () => {
   const [postBook, _] = useMutation(createBookMutation, {
     refetchQueries: [{ query: authorQuery }],
     update(cache) {
-      // this is the only reliable way I found to force  refetch on the allbooks query with and without variables
+      // this is the only reliable way I found to force a refetch on the allbooks query with and without variables
       cache.evict({ fieldName: "allBooks" });
     },
   });
