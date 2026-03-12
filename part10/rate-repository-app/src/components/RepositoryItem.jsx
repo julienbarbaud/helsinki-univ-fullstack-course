@@ -7,10 +7,8 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: theme.colors.cardBackground,
     borderRadius: 5,
-    shadowOpacity: 0.7,
-    shadowOffset: 1,
-    shadowRadius: 5,
-    shadowColor: "black",
+    boxShadow: "4px 4px 7px black",
+    marginHorizontal: 10,
     padding: 5,
   },
   description: {
@@ -49,7 +47,10 @@ const styles = StyleSheet.create({
 const RepositoryItem = ({ item }) => (
   <View style={styles.card}>
     <View style={styles.headerContainer}>
-      <Image src={item.ownerAvatarUrl} style={styles.avatar}></Image>
+      <Image
+        source={{ uri: item.ownerAvatarUrl }}
+        style={styles.avatar}
+      ></Image>
       <View style={styles.infoContainer}>
         <Text fontWeight="bold" fontSize="heading">
           {item.fullName}

@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import theme from "../theme";
 import * as yup from "yup";
 import ValidatedInput from "./ValidatedInput";
+import useSignIn from "../hooks/useSignIn";
 
 const styles = StyleSheet.create({
   button: {
@@ -18,15 +19,17 @@ const styles = StyleSheet.create({
 });
 
 const LoginView = () => {
+  const [signIn] = useSignIn();
+
   const initialValues = {
     username: "",
     password: "",
   };
 
-  const handleSubmit = (values) => {
-    window.alert(
-      `logging in as ${values.username} with password ${values.password}`,
-    );
+  const handleSubmit = async (values) => {
+    console.log(values);
+    const result = await signIn({ credentials: values });
+    console.log(`got token: ${result.data.authenticate.accessToken}`);
   };
 
   const validationSchema = yup.object().shape({

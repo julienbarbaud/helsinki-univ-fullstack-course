@@ -2,7 +2,7 @@ import { Platform } from "react-native";
 
 const theme = {
   colors: {
-    textPrimary: Platform.OS === "android" ? "green" : "#24292e",
+    textPrimary: "#24292e",
     textSecondary: "#e7ebf0ff",
     textSubheading: "#586069ff",
     primary: "#0366d6",

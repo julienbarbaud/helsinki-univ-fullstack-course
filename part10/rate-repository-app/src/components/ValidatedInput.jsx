@@ -1,5 +1,6 @@
 import Text from "./Text";
 import { TextInput, StyleSheet } from "react-native";
+import { View } from "react-native";
 import theme from "../theme";
 
 const styles = StyleSheet.create({
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
 });
 
 const ValidatedInput = ({ formik, type, isInvalid }) => (
-  <>
+  <View>
     <TextInput
       style={[styles.input, isInvalid(type) && styles.wrongInput]}
       placeholder={type}
@@ -26,7 +27,7 @@ const ValidatedInput = ({ formik, type, isInvalid }) => (
       onBlur={formik.handleBlur(type)}
     />
     {isInvalid(type) && <Text color="error">{formik.errors[type]}</Text>}
-  </>
+  </View>
 );
 
 export default ValidatedInput;

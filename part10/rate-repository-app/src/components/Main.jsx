@@ -1,6 +1,4 @@
-import Text from "./Text";
 import { StyleSheet, View } from "react-native";
-import Constants from "expo-constants";
 import RepositoryList from "./RepositoryList";
 import AppBar from "./AppBar";
 import theme from "../theme";
@@ -15,7 +13,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     flexGrow: 1,
     flexShrink: 1,
-    paddingHorizontal: 10,
     paddingTop: 10,
   },
   title: {
