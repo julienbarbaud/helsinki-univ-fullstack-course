@@ -6,7 +6,6 @@ import { Pressable, View } from "react-native";
 import useCreateUser from "../hooks/useCreateUser";
 
 const SignUp = () => {
-  console.log("got in sign up");
   const createUser = useCreateUser();
 
   const initialValues = {
@@ -32,7 +31,6 @@ const SignUp = () => {
   const formik = useFormik({ initialValues, validationSchema, onSubmit });
 
   const isInvalid = (name) => formik.touched[name] && formik.errors[name];
-  console.log("about to render");
   return (
     <View>
       <ValidatedInput type="username" formik={formik} isInvalid={isInvalid} />

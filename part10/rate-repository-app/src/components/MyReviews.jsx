@@ -16,7 +16,6 @@ const MyReviews = () => {
   const { data, loading, error } = useQuery(USER_QUERY, {
     variables: { includeReviews: true },
   });
-  console.log(data?.me.reviews.edges.map((e) => e.node));
 
   return data ? (
     <FlatList

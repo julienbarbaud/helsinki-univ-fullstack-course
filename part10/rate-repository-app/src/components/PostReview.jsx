@@ -30,7 +30,6 @@ const PostReview = () => {
   });
 
   const onSubmit = () => {
-    console.log(formik.values);
     post({ ...formik.values, rating: Number(formik.values.rating) });
   };
 

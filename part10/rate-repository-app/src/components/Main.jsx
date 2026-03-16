@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  console.log("launched");
   return (
     <View style={styles.rootContainer}>
       <AppBar />

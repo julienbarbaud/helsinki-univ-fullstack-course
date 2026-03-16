@@ -62,7 +62,6 @@ const LoginView = () => {
   const [signIn] = useSignIn();
 
   const handleSubmit = async (values) => {
-    console.log(values);
     const result = await signIn({ credentials: values });
     console.log(`got token: ${result.data.authenticate.accessToken}`);
   };

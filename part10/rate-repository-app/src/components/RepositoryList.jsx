@@ -68,8 +68,6 @@ const RepositoryList = () => {
     debouncedFilter,
   );
 
-  console.log(repositories);
-
   return (
     <RepositoryListContainer
       repositories={repositories}

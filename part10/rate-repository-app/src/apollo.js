@@ -26,11 +26,14 @@ const createApolloClient = () => {
     uri: `${Constants.expoConfig.extra.SERVER_URL}:4000/graphql`,
   });
 
+  // This is paramount so that queries get properly updated without custom fetch policies:
+  const repositoriesArguments = ["orderBy", "orderDirection", "searchKeyword"];
+
   const memoryCache = new InMemoryCache({
     typePolicies: {
       Query: {
         fields: {
-          repositories: relayStylePagination(),
+          repositories: relayStylePagination(repositoriesArguments),
         },
       },
       Repository: {

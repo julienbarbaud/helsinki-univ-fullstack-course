@@ -27,7 +27,6 @@ const SingleRepository = () => {
   if (loading || error) return null;
 
   const reviews = data.repository.reviews.edges.map((e) => e.node);
-  console.log(reviews);
   return (
     <>
       <FlatList

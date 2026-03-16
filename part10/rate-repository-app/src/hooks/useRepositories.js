@@ -37,19 +37,17 @@ const useRepositories = (selectedOrder, searchKeyword, pageSize = 4) => {
   }
   if (loading || error) return [{ edges: [] }, () => {}];
 
-  const returnValue = [
+  return [
     data.repositories,
     () => {
-      console.log("fethcing more");
       fetchMore({
-        variables: { after: data.repositories.pageInfo.endCursor },
-        ...variables,
+        variables: {
+          after: data.repositories.pageInfo.endCursor,
+          ...variables,
+        },
       });
     },
   ];
-
-  console.log("returns: ", returnValue);
-  return returnValue;
 };
 
 export default useRepositories;
