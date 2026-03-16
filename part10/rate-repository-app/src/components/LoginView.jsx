@@ -18,18 +18,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginView = () => {
-  const [signIn] = useSignIn();
-
+export const LoginViewContainer = ({ handleSubmit }) => {
   const initialValues = {
     username: "",
     password: "",
-  };
-
-  const handleSubmit = async (values) => {
-    console.log(values);
-    const result = await signIn({ credentials: values });
-    console.log(`got token: ${result.data.authenticate.accessToken}`);
   };
 
   const validationSchema = yup.object().shape({
@@ -64,6 +56,18 @@ const LoginView = () => {
       </Pressable>
     </View>
   );
+};
+
+const LoginView = () => {
+  const [signIn] = useSignIn();
+
+  const handleSubmit = async (values) => {
+    console.log(values);
+    const result = await signIn({ credentials: values });
+    console.log(`got token: ${result.data.authenticate.accessToken}`);
+  };
+
+  return <LoginViewContainer handleSubmit={handleSubmit} />;
 };
 
 export default LoginView;

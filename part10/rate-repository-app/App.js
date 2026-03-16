@@ -3,6 +3,7 @@ import { NativeRouter } from "react-router-native";
 import { ApolloProvider } from "@apollo/client/react";
 import createApolloClient from "./src/apollo";
 import AuthStorage, { authStorageContext } from "./src/authStorage";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const apolloClient = createApolloClient();
 
@@ -16,7 +17,9 @@ const App = () => {
     >
       <ApolloProvider client={apolloClient}>
         <authStorageContext.Provider value={new AuthStorage()}>
-          <Main />
+          <SafeAreaProvider>
+            <Main />
+          </SafeAreaProvider>
         </authStorageContext.Provider>
       </ApolloProvider>
     </NativeRouter>

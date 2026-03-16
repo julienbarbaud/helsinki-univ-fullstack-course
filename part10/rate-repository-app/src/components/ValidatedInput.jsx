@@ -17,17 +17,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const ValidatedInput = ({ formik, type, isInvalid }) => (
-  <View>
-    <TextInput
-      style={[styles.input, isInvalid(type) && styles.wrongInput]}
-      placeholder={type}
-      value={formik.values[type]}
-      onChangeText={formik.handleChange(type)}
-      onBlur={formik.handleBlur(type)}
-    />
-    {isInvalid(type) && <Text color="error">{formik.errors[type]}</Text>}
-  </View>
-);
+const ValidatedInput = ({ formik, type, isInvalid, multiline }) => {
+  return (
+    <View>
+      <TextInput
+        style={[styles.input, isInvalid(type) && styles.wrongInput]}
+        placeholder={type}
+        value={formik.values[type]}
+        onChangeText={formik.handleChange(type)}
+        onBlur={formik.handleBlur(type)}
+        multiline={Boolean(multiline)}
+      />
+      {isInvalid(type) && <Text color="error">{formik.errors[type]}</Text>}
+    </View>
+  );
+};
 
 export default ValidatedInput;
